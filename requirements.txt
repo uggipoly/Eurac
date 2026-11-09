@@ -1,0 +1,12 @@
+# Configurazione
+python-dotenv>=1.0
+
+# Strumenti (passo 2)
+requests>=2.31
+ddgs>=9.0           # ricerca DuckDuckGo, senza chiave
+trafilatura>=1.12   # estrazione testo dagli articoli
+
+# Validazione output LLM (passo 3)
+pydantic>=2.6
+
+# Il client LLM (anthropic / openai / google-genai / ollama) si aggiunge quando decidiamo
