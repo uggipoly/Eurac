@@ -14,6 +14,6 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "").strip()
 
 
 def get_key(name: str) -> str | None:
-    """Restituisce la chiave API o None se vuota."""
+    """Return the API key or None if not found."""
     value = os.getenv(name, "").strip()
     return value or None
