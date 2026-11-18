@@ -7,8 +7,10 @@ Uso:
     python demo_tools.py wayback "repubblica.it/2003/*" 2003 2007 ".*siccit.*"
 """
 import sys
+from pathlib import Path
 
-sys.path.insert(0, "src")
+# rende importabile il pacchetto in src/ da qualunque cartella si lanci lo script
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 from eurac_agent import tools  # noqa: E402
 

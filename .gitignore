@@ -1,6 +1,19 @@
+# Ambiente Python
 .venv/
+venv/
 __pycache__/
 *.pyc
+*.egg-info/
+
+# Segreti: le chiavi API stanno solo in .env (vedi .env.example)
 .env
+
+# Dati scaricati e log delle esecuzioni (non versionati)
 data/
 logs/
+
+
+# Editor / sistema
+.vscode/
+.idea/
+.DS_Store

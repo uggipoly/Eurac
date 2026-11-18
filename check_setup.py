@@ -1,7 +1,9 @@
 """Verifica rapida del setup: import delle librerie e lettura di .env."""
 import sys
+from pathlib import Path
 
-sys.path.insert(0, "src")
+# rende importabile il pacchetto in src/ da qualunque cartella si lanci lo script
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 from eurac_agent import config  # noqa: E402
 
