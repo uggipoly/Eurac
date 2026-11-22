@@ -19,7 +19,8 @@ def show_search(q):
     print(f"\n== Ricerca web: {q!r}")
     res = tools.search_web(q, max_results=5)
     for r in res:
-        print(" -", r.get("title"), "\n  ", r.get("url"), r.get("error", ""))
+        print(" -", r.get("title"), f"[anno URL: {r.get('url_year')}]",
+              "\n  ", r.get("url"), r.get("error", ""))
     return res
 
 
@@ -46,14 +47,15 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if not args:
         res = show_search("siccità Trentino agricoltura 2022")
-        first = next((r["url"] for r in res if r.get("url")), None)
-        if first:
-            show_fetch(first)
+        # prova i risultati in ordine finché uno si estrae (paywall, errori, ecc.)
+        for r in res:
+            if r.get("url") and show_fetch(r["url"])["ok"]:
+                break
         wb = show_wayback("repubblica.it/2003/*", None, None, ".*siccit.*")
         if wb and "error" not in wb[0]:
             print("\n== Estrazione dalla Wayback del primo risultato")
             a = tools.wayback_fetch(wb[0]["url"], wb[0]["timestamp"])
-            print("  ok" if a["ok"] else f"  KO: {a['error']}", a.get("title"), a.get("date"))
+            print("  ok" if a["ok"] else f"  KO: {a['error']}", a.get("title"), a.get("date"), a.get("sitename"))
     elif args[0] == "search":
         show_search(" ".join(args[1:]))
     elif args[0] == "fetch":
