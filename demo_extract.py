@@ -1,4 +1,4 @@
-"""Prova dell'estrattore LLM (passo 3).
+"""Prova dell'estrattore (passo 3).
 
 Uso:
     python demo_extract.py                 # 3 casi di test (2003, 2022, film = falso positivo)

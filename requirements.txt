@@ -9,5 +9,5 @@ trafilatura>=1.12   # estrazione testo dagli articoli
 # Validazione output LLM (passo 3)
 pydantic>=2.6
 
-# Client LLM (passo 3): Gemini, piano gratuito di Google AI Studio
+# Estrattore (passo 3): Gemini
 google-genai>=1.0

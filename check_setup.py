@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 from eurac_agent import config  # noqa: E402
 
 print("Python:", sys.version.split()[0])
-for mod in ["requests", "ddgs", "trafilatura", "pydantic", "dotenv"]:
+for mod in ["requests", "ddgs", "trafilatura", "pydantic", "dotenv", "google.genai"]:
     try:
         __import__(mod)
         print(f"  ok  {mod}")
@@ -16,6 +16,5 @@ for mod in ["requests", "ddgs", "trafilatura", "pydantic", "dotenv"]:
         print(f"  KO  {mod}: {e}")
 
 print("ROOT:", config.ROOT)
-print("LLM_PROVIDER:", config.LLM_PROVIDER or "(non ancora scelto)")
-for k in ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY"]:
-    print(f"  {k}:", "presente" if config.get_key(k) else "vuota")
+print("GEMINI_API_KEY:", "presente" if config.get_key("GEMINI_API_KEY") else "MANCANTE (vedi README)")
+print("Modelli:", config.GEMINI_MODEL, "+ riserve", config.GEMINI_FALLBACK_MODELS)
